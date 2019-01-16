@@ -3,6 +3,11 @@ defmodule Discuss.TopicController do
 
     alias Discuss.Topic
 
+    def index(conn, _params) do
+        # in shell: Discuss.Repo.all(Discuss.Topic)
+        topics = Repo.all(Topic)
+    end
+
     def new(conn, _params) do
         changeset = Topic.changeset(%Topic{}, %{})
         render conn, "new.html", changeset: changeset
