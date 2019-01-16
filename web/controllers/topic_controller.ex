@@ -6,6 +6,7 @@ defmodule Discuss.TopicController do
     def index(conn, _params) do
         # in shell: Discuss.Repo.all(Discuss.Topic)
         topics = Repo.all(Topic)
+        render conn, "index.html", topics: topics
     end
 
     def new(conn, _params) do
