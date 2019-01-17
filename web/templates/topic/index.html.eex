@@ -4,7 +4,8 @@
         <li class="collection-item">
             <%= topic.title %>
             <div class="right">
-            <%= link "edit", to: topic_path(@conn, :edit, topic.id)%>
+                <%= link "edit", to: topic_path(@conn, :edit, topic.id)%>
+                <%= link "delete", to: topic_path(@conn, :delete, topic.id)%>
             </div>
         </li>
     <% end %>
