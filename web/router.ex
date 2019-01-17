@@ -23,7 +23,7 @@ defmodule Discuss.Router do
     # put "/topics/:id", TopicController, :update
     # get "/topics/:id/delete", TopicController, :delete
     # REST convention URLs above replaced by just using resources
-    resources "/topics", TopicController
+    resources "/", TopicController
   end
 
   # Other scopes may use custom stacks.
