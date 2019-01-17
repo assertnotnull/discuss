@@ -55,15 +55,20 @@ defmodule Discuss.TopicController do
     end
 
     def delete(conn, %{"id" => topic_id}) do
-        topic = Repo.get(Topic, topic_id)
-        changeset = Topic.changeset(topic)
-        case Repo.delete(changeset) do
-            {:ok, _changeset} ->
-                conn
-                |> put_flash(:info, "Topic deleted")
-                |> redirect(to: topic_path(conn, :index))
-            {:error, changeset} ->
-                render conn, "index.html", changeset: changeset
-        end
+        # topic = Repo.get(Topic, topic_id)
+        # changeset = Topic.changeset(topic)
+        # case Repo.delete(changeset) do
+        #     {:ok, _changeset} ->
+        #         conn
+        #         |> put_flash(:info, "Topic deleted")
+        #         |> redirect(to: topic_path(conn, :index))
+        #     {:error, changeset} ->
+        #         render conn, "index.html", changeset: changeset
+        # end
+        Repo.get!(Topic, topic_id) |> Repo.delete!
+        
+        conn
+        |> put_flash(:info, "Topic deleted")
+        |> redirect(to: topic_path(conn, :index))
     end
 end
